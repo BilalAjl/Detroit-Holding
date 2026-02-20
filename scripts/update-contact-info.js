@@ -1,7 +1,10 @@
 import { readdir, readFile, writeFile } from 'fs/promises';
-import { join } from 'path';
+import { join, resolve } from 'path';
 
-const PUBLIC_DIR = join(process.cwd(), 'public');
+// The script runs from the project root
+const PUBLIC_DIR = resolve('public');
+console.log('Looking for files in:', PUBLIC_DIR);
+console.log('CWD:', process.cwd());
 
 async function updateContactInfo() {
   const files = await readdir(PUBLIC_DIR);
